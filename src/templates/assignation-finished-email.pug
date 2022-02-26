@@ -1,0 +1,137 @@
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    style.
+      body {
+        margin: 0;
+      }
+      .main {
+        width: 700px;
+        margin: auto;
+        background: #757575;
+      }
+
+      img.logo {
+        margin-top: 20px;
+        width: 400px;
+        margin-left: 150px;
+      }
+      
+      a.sty {
+        cursor:default;
+      }
+
+      h1, h2, h3, p {
+        color: white;
+        font-family: sans-serif;
+        text-align: center;
+      }
+
+      .title {
+        color: white;
+        font-family: sans-serif;
+        font-size: 52px;
+        width: 100%;
+        font-weight: 200;
+        text-align: center;
+        letter-spacing: 2px;
+        margin-top: 60px;
+      }
+
+      .desc {
+        text-align: center;
+        font-size: 22px;
+        padding: 0px 90px;
+      }
+
+      hr {
+        width: 80%;
+        opacity: 50%;
+        margin-bottom: 44px;
+      }
+
+      h3 {
+        margin-bottom: 10px;
+      }
+
+      .addr, .date {
+        margin: 1px;
+        font-size: 19px
+      }
+
+      img.btn {
+        width: 238px;
+        margin-left: 181px;
+      }
+
+      .footer {
+        width: 700px;
+        margin: auto;
+        background: #ffd438;
+        height: 100px;
+        padding-top: 10px;
+      }
+      .footerText {
+        color: black;
+        margin-top: 0px;
+        padding-top: 20px;
+        align-content: center;
+        font-family: serif;
+        font-size: 18px;
+        font-weight: bold;
+      }
+      .textLink{
+        font-size: 16px;
+      }
+
+      img.social{
+        margin-top: 10px;
+        width: 30px;
+        margin-left: 20px;
+      }
+      .buttonsSocial {
+        display: inline-block;
+        margin: 4px 2px;
+        cursor: pointer;
+        margin-left: 42%;
+      }
+
+      img.signature{
+        height: 100px;
+        background-color: #F3ECEB;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px;
+        width: 200px;
+        margin-top: 10px;
+        margin-left: 30px;
+      }
+
+  body
+    .main
+      a.sty(href='#')
+        img.logo(src="https://res.cloudinary.com/dwt2mlvvc/image/upload/v1607695871/LightLogo_dp2edv.png")
+      h1.title #{jobName} finished
+      p.desc By driver #{driverName}
+      hr
+      p Total hours: #{hours}
+      if (sumLoad > 0)
+        p Total load: #{sumLoad}
+      if (sumTons > 0)
+        p Total tons: #{sumTons}
+      p Amount to be paid to the driver: #{formattedAmount}
+      hr
+      p Signature
+      img.signature(src=imageUrl)
+      br
+      br
+      br
+      .footer
+        .buttonsSocial
+          a(href='#')
+            img.social(src="https://res.cloudinary.com/dwt2mlvvc/image/upload/v1607696047/insta_k4enqf.png")
+          a(href='#')
+            img.social(src="https://res.cloudinary.com/dwt2mlvvc/image/upload/v1607696033/facebook_n9mlgv.png")
+        p.footerText EZ Dump Truck #{(new Date()).getFullYear()}

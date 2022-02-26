@@ -1,0 +1,6 @@
+export enum DriverPaymentMethods {
+  BY_HOUR = 'BY_HOUR',
+  BY_HOUR_TICKET = 'BY_HOUR_TICKET',
+  BY_HOUR_GATE_TO_GATE = 'BY_HOUR_GATE_TO_GATE',
+  BY_PERCENT = 'BY_PERCENT',
+}
