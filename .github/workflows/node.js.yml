@@ -22,7 +22,7 @@ jobs:
     
     - name: Packages Installation
       run: npm install && npm install -g serverless
-    - name: Serverless Configuratio
-      run: serverless config credentials --stage dev --provider aws --key ${{ secrets.AWS_SECRET_KEY}} --secret ${{ secrets.AWS_SECRET_VALUE }}
+    - name: Serverless Configuration
+      run: serverless config credentials --provider aws --key ${{ secrets.AWS_SECRET_KEY}} --secret ${{ secrets.AWS_SECRET_VALUE }}
     - name: Serverless Deployment
-      run: serverless deploy --stage dev --region eu-west-1
+      run: serverless deploy --stage development --region eu-west-1
