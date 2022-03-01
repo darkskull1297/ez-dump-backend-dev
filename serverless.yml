@@ -13,15 +13,10 @@ provider:
         - "s3:*"
       Resource: "arn:aws:s3:::test-bucket-ezdumptruck/*"
 
-# Expose function to public API for POST requests.
-functions:
-  requestUploadURL:
-    handler: handler.requestUploadURL
-    events:
-      - http:
-          path: requestUploadURL
-          method: post
-          cors: true
+package:
+  exclude:
+    - node_modules/**
+
 
 # Give service access to the specific S3 bucket.
 resources:
