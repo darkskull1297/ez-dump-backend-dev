@@ -26,7 +26,7 @@ resources:
     UploadBucket:
       Type: AWS::S3::Bucket
       Properties:
-        BucketName: [test-bucket-darkskull1297]
+        BucketName: test-bucket-darkskull1297
         AccessControl: PublicRead
         CorsConfiguration:
           CorsRules:
