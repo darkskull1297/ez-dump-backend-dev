@@ -4,14 +4,14 @@ service: UploadCodeEZDUMP
 provider:
   name: aws
   runtime: nodejs12.x
-  stage: dev
+  stage: development
   profile: devProfile
   # Provide permissions for this service to manipulate S3.
   iamRoleStatements:
     - Effect: "Allow"
       Action:
         - "s3:*"
-      Resource: "arn:aws:s3:::uploadcodeezdump-develop-serverlessdeploymentbuck-t9bws6yrr3gj/*"
+      Resource: "arn:aws:s3:::test-bucket-darkskull1297/*"
 
 # Expose function to public API for POST requests.
 functions:
@@ -29,7 +29,7 @@ resources:
     UploadBucket:
       Type: AWS::S3::Bucket
       Properties:
-        BucketName: uploadcodeezdump-develop-serverlessdeploymentbuck-t9bws6yrr3gj
+        BucketName: test-bucket-darkskull1297
         AccessControl: PublicRead
         CorsConfiguration:
           CorsRules:
