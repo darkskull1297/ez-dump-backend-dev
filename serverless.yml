@@ -11,7 +11,7 @@ provider:
     - Effect: "Allow"
       Action:
         - "s3:*"
-      Resource: "arn:aws:s3:::test-bucket-darkskull1297/*"
+      Resource: "arn:aws:s3:::test-bucket-ezdumptruck/*"
 
 # Expose function to public API for POST requests.
 functions:
@@ -29,7 +29,7 @@ resources:
     UploadBucket:
       Type: AWS::S3::Bucket
       Properties:
-        BucketName: test-bucket-darkskull1297
+        BucketName: test-bucket-ezdumptruck
         AccessControl: PublicRead
         CorsConfiguration:
           CorsRules:
