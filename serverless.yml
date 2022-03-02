@@ -32,13 +32,14 @@ package:
 
 # Expose function to public API for POST requests.
 functions:
-  users:
-    handler: users.handler
+  # option 1: sync upload
+  uploadFile:
+    handler: build.uploadFile
     events:
-      - s3:
-          bucket: test-bucket-ezdumptruck
-          event: s3:ObjectCreated:*
-          existing: true
+      - http:
+          method: post
+          path: upload
+          cors: true
 
 # Give service access to the specific S3 bucket.
 resources:
@@ -47,15 +48,3 @@ resources:
       Type: AWS::S3::Bucket
       Properties:
         BucketName: test-bucket-ezdumptruck
-        AccessControl: PublicRead
-        CorsConfiguration:
-          CorsRules:
-          - AllowedMethods:
-            - GET
-            - PUT
-            - POST
-            - HEAD
-            AllowedOrigins:
-            - "*"
-            AllowedHeaders:
-            - "*"
