@@ -20,7 +20,7 @@ package:
     - src/**
     - .idea/**
     - .vscode/** 
-    - "@types"
+    - /@types/**
     - test/**
     - .eslintrc.js
     - .prettierrc
@@ -40,11 +40,3 @@ functions:
           method: post
           path: upload
           cors: true
-
-# Give service access to the specific S3 bucket.
-resources:
-  Resources:
-    UploadBucket:
-      Type: AWS::S3::Bucket
-      Properties:
-        BucketName: test-bucket-ezdumptruck
