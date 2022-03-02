@@ -16,16 +16,28 @@ provider:
 package:
   exclude:
     - node_modules/**
+    - .github/**
+    - .idea/**
+    - .vscode/** 
+    - @types/**
+    - test/**
+    - .eslintrc.js
+    - .prettierrc
+    - nest-cli.json
+    - README.md
+    - tsconfig.build.json
+    - tsconfig.json
+    - yarn.lock
 
 # Expose function to public API for POST requests.
 functions:
-  requestUploadURL:
-    handler: handler.requestUploadURL
+  users:
+    handler: users.handler
     events:
-      - http:
-          path: requestUploadURL
-          method: post
-          cors: true
+      - s3:
+          bucket: test-bucket-ezdumptruck
+          event: s3:ObjectCreated:*
+          existing: true
 
 # Give service access to the specific S3 bucket.
 resources:

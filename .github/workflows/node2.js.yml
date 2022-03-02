@@ -1,0 +1,61 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Node.js CI
+
+on:
+  push:
+    branches: [ testing ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm ci
+    - run: npm run build --if-present
+    ## - run: npm test
+    
+    - name: SCP Command to Transfer Files
+      uses: appleboy/scp-action@v0.1.1
+      with:
+        # scp remote host
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        # content of ssh private key. ex raw content of ~/.ssh/id_rsa
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        # target path on the server
+        target: "~/software"
+        # scp file list
+        source: "dist/**, pm2-deploy.sh, package.json"
+        # enable debug message
+        debug: true
+        
+    - name: SSH Remote Commands
+      uses: appleboy/ssh-action@v0.1.3
+      with:
+        # ssh host
+        host: ${{ secrets.SSH_HOST }}
+        # ssh username
+        username: ${{ secrets.SSH_USERNAME }}
+        # content of ssh private key. ex raw content of ~/.ssh/id_rsa
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        # execute commands
+        script: chmod +x ~/software/pm2-deploy.sh && ~/software/pm2-deploy.sh
+        # enable debug mode
+        debug: true
+        
+    - name: Slack Notification
+      uses: rtCamp/action-slack-notify@master
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
