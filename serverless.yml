@@ -17,9 +17,10 @@ package:
   exclude:
     - node_modules/**
     - .github/**
+    - src/**
     - .idea/**
     - .vscode/** 
-    - types/**
+    - "@types"
     - test/**
     - .eslintrc.js
     - .prettierrc
