@@ -1,5 +1,10 @@
 service: UploadCodeEZDUMP
 
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: development
+  profile: devProfile
 Resources:
   # HTTP API
   MyApi:
