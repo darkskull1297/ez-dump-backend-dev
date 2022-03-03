@@ -8,7 +8,7 @@ local_path=$5
 rm -rf $local_path
 
 # Create a zip of the current directory.
-zip -r $local_path . -x "*.git/**" -x "*.git/" -x "*.github/**" -x "scripts/**" -x "node_modules/**" -x ".DS_Store"
+zip -r $local_path . -x "*.git/**" -x "*.git/" -x "*.github/" -x "scripts/**" -x "node_modules/**" -x ".DS_Store"
 
 # Install required dependencies for Python script.
 pip3 install boto3
