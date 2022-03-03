@@ -29,6 +29,6 @@ jobs:
     - name: Serverless Installation
       run: npm install -g serverless
     - name: Serverless Configuration
-      run: serverless config credentials --provider aws --key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret ${{ secrets.AWS_SECRET_ACCESS_KEY }} --profile devProfile --overwrite
+      run: serverless config credentials --key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret ${{ secrets.AWS_SECRET_ACCESS_KEY }} --overwrite
     - name: Serverless Deployment
       run: serverless deploy --stage development --region eu-west-1
